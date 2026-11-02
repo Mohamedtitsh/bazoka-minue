@@ -1,1126 +1,879 @@
-<!DOCTYPE html>
-<html dir="rtl" lang="ar">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width,initial-scale=1" name="viewport"/>
-  <title>
-   بازوكا | المنيو
-  </title>
-  <meta content="منيو دجاج مقرمش وبرجر ووجبات وعروض &mdash; تصميم تجريبي مستوحى من أسلوب قوائم مطاعم الوجبات السريعة." name="description"/>
-  <link href="https://fonts.googleapis.com" rel="preconnect"/>
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-  <style>
-   :root
-{
-    --red:#d71920;
-    --red2:#b90e17;
-    --ink:#171717;
-    --muted:#777;
-    --paper:#fff;
-    --cream:#fff8f1;
-    --line:#eee;
-    --yellow:#ffd329;
-    --shadow:0 12px 35px #17171712
-}
-*
-{
-    box-sizing:border-box
-}
-html
-{
-    scroll-behavior:smooth
-}
-body
-{
-    margin:0;
-    background:#fafafa;
-    color:var(--ink);
-    font-family:'Cairo',Arial,sans-serif
-}
-button,input
-{
-    font:inherit
-}
-button
-{
-    cursor:pointer
-}
-.top-strip
-{
-    height:7px;
-    background:linear-gradient(90deg,var(--yellow) 0 18%,var(--red) 18% 100%)
-}
-.header
-{
-    position:sticky;
-    top:0;
-    z-index:20;
-    background:#fff;
-    border-bottom:1px solid #eee;
-    box-shadow:0 3px 18px #00000008
-}
-.header-inner
-{
-    max-width:1200px;
-    margin:auto;
-    padding:12px 22px;
-    display:flex;
-    align-items:center;
-    gap:22px
-}
-.brand
-{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    text-decoration:none;
-    color:var(--red);
-    font-weight:900;
-    font-size:26px;
-    white-space:nowrap
-}
-.brand-mark
-{
-    width:43px;
-    height:43px;
-    border-radius:14px;
-    background:var(--red);
-    display:grid;
-    place-items:center;
-    color:#fff;
-    font-size:25px;
-    box-shadow:inset 0 -4px #970d14
-}
-.brand small
-{
-    display:block;
-    font-size:9px;
-    line-height:1;
-    color:#555;
-    letter-spacing:1.6px
-}
-.search
-{
-    flex:1;
-    position:relative
-}
-.search input
-{
-    width:100%;
-    border:1px solid #e8e8e8;
-    border-radius:13px;
-    padding:12px 44px 12px 14px;
-    background:#f8f8f8;
-    outline:none
-}
-.search input:focus
-{
-    border-color:var(--red);
-    background:#fff
-}
-.search:before
-{
-    content:'⌕';
-    position:absolute;
-    right:15px;
-    top:1px;
-    font-size:28px;
-    color:#777
-}
-.header-actions
-{
-    display:flex;
-    gap:10px;
-    align-items:center
-}
-.pill
-{
-    border:1px solid #eee;
-    background:#fff;
-    border-radius:12px;
-    padding:10px 14px;
-    font-weight:800
-}
-.cart-btn
-{
-    background:var(--red);
-    color:#fff;
-    border:0;
-    border-radius:12px;
-    padding:11px 15px;
-    font-weight:800;
-    display:flex;
-    gap:9px;
-    align-items:center
-}
-.count
-{
-    display:grid;
-    place-items:center;
-    min-width:22px;
-    height:22px;
-    background:var(--yellow);
-    color:#111;
-    border-radius:50%;
-    font-size:12px
-}
-.hero
-{
-    max-width:1200px;
-    margin:22px auto 0;
-    padding:0 22px
-}
-.hero-card
-{
-    min-height:255px;
-    border-radius:24px;
-    overflow:hidden;
-    position:relative;
-    background:#191919;
-    display:flex;
-    align-items:center;
-    color:white;
-    box-shadow:var(--shadow)
-}
-.hero-card:before
-{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:linear-gradient(90deg,#151515 0%,#151515f0 42%,#15151535 100%),url('https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=1500&q=85') center/cover
-}
-.hero-copy
-{
-    position:relative;
-    z-index:1;
-    padding:34px 42px;
-    max-width:580px
-}
-.eyebrow
-{
-    color:var(--yellow);
-    font-size:13px;
-    font-weight:900;
-    letter-spacing:.7px
-}
-.hero h1
-{
-    font-size:clamp(30px,4vw,48px);
-    line-height:1.25;
-    margin:8px 0 12px;
-    font-weight:900
-}
-.hero p
-{
-    color:#eee;
-    line-height:1.9;
-    margin:0 0 18px
-}
-.hero-cta
-{
-    background:var(--yellow);
-    color:#111;
-    border:0;
-    border-radius:12px;
-    padding:12px 22px;
-    font-weight:900
-}
-.hero-sticker
-{
-    position:absolute;
-    left:35px;
-    bottom:25px;
-    z-index:1;
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    background:var(--red);
-    border:4px dashed #ffffffb0;
-    display:grid;
-    place-items:center;
-    text-align:center;
-    transform:rotate(-10deg);
-    font-size:14px;
-    font-weight:900;
-    line-height:1.35
-}
-.wrap
-{
-    max-width:1200px;
-    margin:auto;
-    padding:0 22px
-}
-.section-head
-{
-    display:flex;
-    align-items:end;
-    justify-content:space-between;
-    margin:34px 0 15px;
-    gap:15px
-}
-.section-head h2
-{
-    font-size:25px;
-    margin:0;
-    font-weight:900
-}
-.section-head p
-{
-    margin:3px 0 0;
-    color:var(--muted);
-    font-size:13px
-}
-.categories
-{
-    display:flex;
-    gap:10px;
-    overflow-x:auto;
-    padding:3px 1px 13px;
-    scrollbar-width:thin
-}
-.cat
-{
-    white-space:nowrap;
-    border:1px solid #e9e9e9;
-    border-radius:999px;
-    background:#fff;
-    padding:10px 18px;
-    font-weight:800;
-    color:#444;
-    transition:.2s
-}
-.cat.active,.cat:hover
-{
-    background:var(--red);
-    border-color:var(--red);
-    color:#fff
-}
-.offer-row
-{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    margin:7px 0 26px
-}
-.offer
-{
-    border-radius:18px;
-    padding:19px;
-    min-height:130px;
-    position:relative;
-    overflow:hidden;
-    color:#fff;
-    background:var(--red)
-}
-.offer:nth-child(2)
-{
-    background:#222
-}
-.offer:nth-child(3)
-{
-    background:#f7c928;
-    color:#181818
-}
-.offer b
-{
-    font-size:18px;
-    display:block;
-    position:relative;
-    z-index:1
-}
-.offer span
-{
-    font-size:12px;
-    opacity:.9;
-    display:block;
-    margin-top:5px;
-    position:relative;
-    z-index:1
-}
-.offer strong
-{
-    font-size:22px;
-    display:block;
-    margin-top:8px;
-    position:relative;
-    z-index:1
-}
-.offer:after
-{
-    content:'🍗';
-    position:absolute;
-    left:12px;
-    bottom:-18px;
-    font-size:85px;
-    opacity:.16;
-    transform:rotate(-20deg)
-}
-.toolbar
-{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin:25px 0 15px
-}
-.toolbar h2
-{
-    margin:0;
-    font-size:25px;
-    font-weight:900
-}
-.result-count
-{
-    color:#888;
-    font-size:13px
-}
-.grid
-{
-    display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:16px;
-    padding-bottom:45px
-}
-.card
-{
-    background:#fff;
-    border:1px solid #eee;
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 5px 18px #00000005;
-    transition:transform .2s,box-shadow .2s;
-    display:flex;
-    flex-direction:column;
-    min-width:0
-}
-.card:hover
-{
-    transform:translateY(-4px);
-    box-shadow:var(--shadow)
-}
-.food-image
-{
-    height:170px;
-    position:relative;
-    background:#f1eee9;
-    overflow:hidden
-}
-.food-image img
-{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-    transition:transform .4s
-}
-.card:hover .food-image img
-{
-    transform:scale(1.05)
-}
-.badge
-{
-    position:absolute;
-    top:11px;
-    right:11px;
-    background:var(--yellow);
-    color:#111;
-    border-radius:7px;
-    padding:4px 9px;
-    font-size:10px;
-    font-weight:900
-}
-.heart
-{
-    position:absolute;
-    left:10px;
-    top:10px;
-    border:0;
-    background:#ffffffeb;
-    border-radius:50%;
-    width:32px;
-    height:32px;
-    font-size:17px
-}
-.card-body
-{
-    padding:14px;
-    display:flex;
-    flex-direction:column;
-    flex:1
-}
-.card h3
-{
-    font-size:16px;
-    margin:0 0 5px;
-    font-weight:900
-}
-.desc
-{
-    font-size:12px;
-    line-height:1.7;
-    color:#777;
-    margin:0 0 14px;
-    min-height:40px
-}
-.card-bottom
-{
-    margin-top:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:8px
-}
-.price
-{
-    font-size:18px;
-    font-weight:900;
-    color:var(--red);
-    white-space:nowrap
-}
-.price small
-{
-    font-size:10px;
-    color:#888;
-    font-weight:600
-}
-.add
-{
-    width:39px;
-    height:39px;
-    border:0;
-    border-radius:12px;
-    background:var(--red);
-    color:#fff;
-    font-size:24px;
-    font-weight:700;
-    box-shadow:inset 0 -3px #a70c14
-}
-.add:hover
-{
-    background:var(--red2)
-}
-.empty
-{
-    grid-column:1/-1;
-    text-align:center;
-    padding:45px 10px;
-    color:#888
-}
-.footer
-{
-    background:#191919;
-    color:#eee;
-    padding:30px 22px;
-    margin-top:10px
-}
-.footer-inner
-{
-    max-width:1200px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px
-}
-.footer b
-{
-    font-size:22px;
-    color:var(--yellow)
-}
-.footer p
-{
-    margin:5px 0 0;
-    color:#aaa;
-    font-size:12px
-}
-.footer a
-{
-    color:#fff;
-    text-decoration:none;
-    font-size:13px
-}
-.overlay
-{
-    position:fixed;
-    inset:0;
-    background:#0008;
-    z-index:40;
-    opacity:0;
-    visibility:hidden;
-    transition:.2s
-}
-.overlay.open
-{
-    opacity:1;
-    visibility:visible
-}
-.drawer
-{
-    position:fixed;
-    z-index:41;
-    top:0;
-    bottom:0;
-    left:0;
-    width:min(420px,100%);
-    background:#fff;
-    transform:translateX(-105%);
-    transition:.25s;
-    display:flex;
-    flex-direction:column;
-    box-shadow:var(--shadow)
-}
-.drawer.open
-{
-    transform:translateX(0)
-}
-.drawer-head
-{
-    padding:20px;
-    border-bottom:1px solid #eee;
-    display:flex;
-    align-items:center;
-    justify-content:space-between
-}
-.drawer-head h2
-{
-    margin:0
-}
-.close
-{
-    border:0;
-    background:#f2f2f2;
-    width:35px;
-    height:35px;
-    border-radius:10px;
-    font-size:20px
-}
-.cart-items
-{
-    padding:15px 20px;
-    overflow:auto;
-    flex:1
-}
-.cart-empty
-{
-    text-align:center;
-    color:#888;
-    padding:55px 10px
-}
-.cart-item
-{
-    display:flex;
-    gap:12px;
-    align-items:center;
-    padding:12px 0;
-    border-bottom:1px solid #eee
-}
-.cart-item img
-{
-    width:65px;
-    height:65px;
-    object-fit:cover;
-    border-radius:12px
-}
-.cart-item-main
-{
-    flex:1
-}
-.cart-item h4
-{
-    margin:0 0 4px;
-    font-size:14px
-}
-.cart-item small
-{
-    color:var(--red);
-    font-weight:900
-}
-.qty
-{
-    display:flex;
-    align-items:center;
-    gap:9px;
-    margin-top:7px
-}
-.qty button
-{
-    border:1px solid #ddd;
-    background:#fff;
-    border-radius:7px;
-    width:25px;
-    height:25px
-}
-.drawer-foot
-{
-    border-top:1px solid #eee;
-    padding:18px 20px
-}
-.total
-{
-    display:flex;
-    justify-content:space-between;
-    font-weight:900;
-    font-size:19px;
-    margin-bottom:12px
-}
-.checkout
-{
-    width:100%;
-    border:0;
-    border-radius:12px;
-    background:var(--red);
-    color:#fff;
-    padding:13px;
-    font-weight:900
-}
-.toast
-{
-    position:fixed;
-    bottom:20px;
-    right:50%;
-    transform:translate(50%,20px);
-    background:#171717;
-    color:#fff;
-    padding:11px 18px;
-    border-radius:10px;
-    opacity:0;
-    pointer-events:none;
-    transition:.2s;
-    z-index:60;
-    font-size:13px
-}
-.toast.show
-{
-    opacity:1;
-    transform:translate(50%,0)
-}
-@media(max-width:950px)
-{
-    .grid
-    {
-        grid-template-columns:repeat(3,minmax(0,1fr))
-    }
-    .header-inner
-    {
-        gap:12px
-    }
-    .pill
-    {
-        display:none
-    }
-    .food-image
-    {
-        height:155px
-    }
-}
-@media(max-width:680px)
-{
-    .header-inner
-    {
-        padding:10px 14px;
-        gap:10px;
-        flex-wrap:wrap
-    }
-    .brand
-    {
-        font-size:22px
-    }
-    .brand-mark
-    {
-        width:38px;
-        height:38px
-    }
-    .search
-    {
-        order:3;
-        flex-basis:100%
-    }
-    .header-actions
-    {
-        margin-right:auto
-    }
-    .hero
-    {
-        padding:0 14px;
-        margin-top:14px
-    }
-    .hero-card
-    {
-        min-height:270px
-    }
-    .hero-copy
-    {
-        padding:25px 22px;
-        max-width:90%
-    }
-    .hero-sticker
-    {
-        left:13px;
-        bottom:14px;
-        width:70px;
-        height:70px;
-        font-size:11px
-    }
-    .wrap
-    {
-        padding:0 14px
-    }
-    .section-head
-    {
-        margin-top:25px
-    }
-    .section-head h2,.toolbar h2
-    {
-        font-size:22px
-    }
-    .offer-row
-    {
-        grid-template-columns:1fr;
-        gap:10px
-    }
-    .offer
-    {
-        min-height:105px;
-        padding:15px
-    }
-    .offer:after
-    {
-        font-size:70px
-    }
-    .grid
-    {
-        grid-template-columns:repeat(2,minmax(0,1fr));
-        gap:10px
-    }
-    .food-image
-    {
-        height:135px
-    }
-    .card-body
-    {
-        padding:11px
-    }
-    .card h3
-    {
-        font-size:14px
-    }
-    .desc
-    {
-        font-size:11px;
-        min-height:54px
-    }
-    .price
-    {
-        font-size:16px
-    }
-    .add
-    {
-        width:34px;
-        height:34px
-    }
-    .footer-inner
-    {
-        flex-direction:column;
-        align-items:flex-start
-    }
-    .toolbar
-    {
-        align-items:flex-start;
-        flex-direction:column;
-        gap:3px
-    }
-}
-@media(max-width:360px)
-{
-    .grid
-    {
-        grid-template-columns:1fr
-    }
-    .food-image
-    {
-        height:190px
-    }
-}
-  </style>
- </head>
- <body>
-  <div class="top-strip">
-  </div>
-  <header class="header">
-   <div class="header-inner">
-    <a class="brand" href="#top">
-     <span class="brand-mark">
-      ب
-     </span>
-     <span>
-      بازوكا
-      <small>
-       CRISPY CHICKEN
-      </small>
-     </span>
-    </a>
-    <div class="search">
-     <input aria-label="البحث في المنيو" id="search" placeholder="دور على أكلك المفضل..." type="search"/>
-    </div>
-    <div class="header-actions">
-     <button class="pill" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">
-      المنيو &darr;
-     </button>
-     <button class="cart-btn" id="openCart">
-      🛒 السلة
-      <span class="count" id="cartCount">
-       0
-      </span>
-     </button>
-    </div>
-   </div>
-  </header>
-  <main id="top">
-   <section class="hero">
-    <div class="hero-card">
-     <div class="hero-copy">
-      <div class="eyebrow">
-       الطعم اللي بتحبه 🔥
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>بيت الشواية | المنيو</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap");
+
+      :root {
+        --red: #a90f19;
+        --deep: #65070e;
+        --gold: #f3c76b;
+        --cream: #fff8ed;
+        --ink: #291a17;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 15% 8%, #d32a2f 0, transparent 28%),
+          radial-gradient(circle at 90% 35%, #7d0912 0, transparent 34%),
+          linear-gradient(145deg, #9f0c17, #5b060d);
+        color: var(--cream);
+        font-family: "Cairo", Tahoma, sans-serif;
+        min-height: 100vh;
+      }
+
+      body:before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.12;
+        background-image: radial-gradient(#f8d98c 1px, transparent 1px);
+        background-size: 24px 24px;
+      }
+
+      .wrap {
+        width: min(1120px, 92%);
+        margin: auto;
+        position: relative;
+      }
+
+      header {
+        padding: 28px 0 18px;
+      }
+
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+      }
+
+      .logo-mark {
+        width: 62px;
+        height: 62px;
+        border: 2px solid var(--gold);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 31px;
+        background: #760811;
+        box-shadow: 0 0 0 5px #ffffff12;
+      }
+
+      .brand {
+        font-size: clamp(25px, 4vw, 39px);
+        font-weight: 900;
+        line-height: 1.1;
+        color: #fff;
+      }
+
+      .brand small {
+        display: block;
+        color: var(--gold);
+        font-size: 12px;
+        letter-spacing: 3px;
+        font-weight: 700;
+        margin-top: 6px;
+      }
+
+      .badge {
+        border: 1px solid #f3c76b88;
+        border-radius: 30px;
+        padding: 9px 16px;
+        color: var(--gold);
+        font-size: 13px;
+        font-weight: 700;
+        backdrop-filter: blur(8px);
+      }
+
+      .hero {
+        margin: 20px 0 28px;
+        padding: 38px 34px;
+        border-radius: 28px;
+        background:
+          linear-gradient(105deg, #350509d9, #680912c9),
+          url("https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=1500&q=85")
+            center/cover;
+        box-shadow: 0 20px 50px #30030866;
+        border: 1px solid #f3c76b55;
+        overflow: hidden;
+        position: relative;
+        min-height: 245px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: clamp(30px, 5vw, 52px);
+        line-height: 1.25;
+        margin: 0 0 8px;
+        font-weight: 900;
+      }
+
+      .hero h1 span {
+        color: var(--gold);
+      }
+
+      .hero p {
+        margin: 0;
+        color: #ffe8d0;
+        font-size: 16px;
+      }
+
+      .hero-line {
+        height: 3px;
+        width: 100px;
+        background: var(--gold);
+        margin: 20px 0 0;
+        border-radius: 5px;
+      }
+
+      .hero:after {
+        content: "🍗";
+        position: absolute;
+        left: 5%;
+        bottom: -22px;
+        font-size: 150px;
+        opacity: 0.18;
+        filter: drop-shadow(0 8px 12px #180205);
+        transform: rotate(-12deg);
+        pointer-events: none;
+      }
+
+      .toolbar {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 0 17px;
+        flex-wrap: wrap;
+      }
+
+      .search {
+        flex: 1;
+        min-width: 220px;
+        background: #fff8ed;
+        border: 0;
+        border-radius: 14px;
+        padding: 14px 18px;
+        font: inherit;
+        color: var(--ink);
+        outline: 0;
+      }
+
+      .search:focus {
+        box-shadow: 0 0 0 3px #f3c76b88;
+      }
+
+      .tabs {
+        display: flex;
+        gap: 8px;
+        overflow: auto;
+        padding: 3px 0 12px;
+        margin-bottom: 18px;
+        scrollbar-width: thin;
+      }
+
+      .tab {
+        white-space: nowrap;
+        border: 1px solid #f3c76b66;
+        background: #ffffff0d;
+        color: #fff5e6;
+        padding: 9px 17px;
+        border-radius: 30px;
+        font: 700 13px "Cairo";
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .tab.active,
+      .tab:hover {
+        background: var(--gold);
+        color: #4c080c;
+        border-color: var(--gold);
+      }
+
+      .section-title {
+        position: relative;
+        min-height: 112px;
+        padding: 18px 22px;
+        border-radius: 20px;
+        overflow: hidden;
+        background:
+          linear-gradient(90deg, #3b0509ed 0%, #650912c9 55%, #65091255 100%),
+          var(--section-photo) center 48% / cover;
+        border: 1px solid #f3c76b66;
+        box-shadow: 0 12px 28px #30030855;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 28px 0 15px;
+      }
+
+      .section-title:after {
+        display: none;
+      }
+
+      .section-title h2 {
+        position: relative;
+        z-index: 1;
+        color: #fff;
+        font-size: 25px;
+        text-shadow: 0 2px 8px #230205;
+        margin: 0;
+        font-weight: 900;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+      }
+
+      .card {
+        background: var(--cream);
+        color: var(--ink);
+        border-radius: 18px;
+        padding: 10px;
+        min-height: 94px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+        border: 1px solid #f3c76b55;
+        box-shadow: 0 8px 20px #33030825;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+
+      .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px #33030855;
+      }
+
+      .food-thumb {
+        width: 88px;
+        height: 74px;
+        flex: 0 0 88px;
+        border-radius: 13px;
+        object-fit: cover;
+        box-shadow: 0 3px 10px #3a170f25;
+      }
+
+      .card .info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .card .name {
+        font-weight: 900;
+        font-size: 15px;
+      }
+
+      .desc {
+        font-size: 12px;
+        color: #806d63;
+        margin-top: 3px;
+        line-height: 1.6;
+      }
+
+      .price {
+        white-space: nowrap;
+        background: #fff0d6;
+        color: #8d1118;
+        border: 1px solid #f0d49c;
+        border-radius: 12px;
+        padding: 7px 10px;
+        font-weight: 900;
+        font-size: 14px;
+      }
+
+      .price small {
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      footer {
+        margin: 35px 0 24px;
+        text-align: center;
+        border-top: 1px solid #f3c76b55;
+        padding: 20px 0;
+        color: #f9dca6;
+        font-size: 12px;
+      }
+
+      footer strong {
+        display: block;
+        font-size: 18px;
+        color: #fff;
+        margin-bottom: 4px;
+      }
+
+      .note {
+        font-size: 11px;
+        color: #f9dca6a8;
+        margin-top: 15px;
+      }
+
+      .empty {
+        display: none;
+        text-align: center;
+        padding: 30px;
+        color: #ffe6c0;
+      }
+
+      @media (max-width: 650px) {
+        .top {
+          align-items: flex-start;
+        }
+
+        .badge {
+          font-size: 11px;
+          padding: 7px 10px;
+        }
+
+        .hero {
+          padding: 28px 22px;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .card {
+          padding: 14px;
+        }
+
+        .section-title h2 {
+          font-size: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .food-thumb {
+          width: 74px;
+          height: 68px;
+          flex-basis: 74px;
+        }
+
+        .section-title {
+          min-height: 92px;
+        }
+
+        .section-title h2 {
+          font-size: 21px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="wrap">
+      <div class="top">
+        <div class="logo">
+          <div class="logo-mark">🔥</div>
+
+          <div class="brand">
+            بيت الشواية
+            <small>BAYT EL SHAWAYA</small>
+          </div>
+        </div>
+
+        <div class="badge">طعم الشواية الأصيل</div>
       </div>
-      <h1>
-       قرمشة من أول قضمة!
-      </h1>
-      <p>
-       اختار وجبتك المفضلة من الساندوتشات، الفرايد تشيكن، والبوكسات &mdash; كله في مكان واحد.
-      </p>
-      <button class="hero-cta" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">
-       شوف المنيو دلوقتي &larr;
-      </button>
-     </div>
-     <div class="hero-sticker">
-      طازة
-      <br/>
-      ومقرمشة
-      <br/>
-      دايمًا!
-     </div>
-    </div>
-   </section>
-   <div class="wrap">
-    <section>
-     <div class="section-head">
-      <div>
-       <h2>
-        عروض متتفوتش 🔥
-       </h2>
-       <p>
-        اختيارات لذيذة للمشاركة أو لوجبتك لوحدك
-       </p>
+    </header>
+
+    <main class="wrap">
+      <section class="hero">
+        <h1>
+          ريحة الشواية…<br />
+          <span>تفتح النفس!</span>
+        </h1>
+
+        <p>اختار وجبتك واستمتع بطعم متظبط من أول لقمة لآخر لقمة.</p>
+
+        <div class="hero-line"></div>
+      </section>
+
+      <div class="toolbar">
+        <input
+          id="search"
+          class="search"
+          type="search"
+          placeholder="🔎 دور على أكلة بتحبها..."
+        />
       </div>
-     </div>
-     <div class="offer-row">
-      <div class="offer">
-       <b>
-        عرض الـ 7 قطع
-       </b>
-       <span>
-        فرايد تشيكن بدون أجنحة + عيش
-       </span>
-       <strong>
-        300 جنيه
-       </strong>
+
+      <nav class="tabs" id="tabs">
+        <button class="tab active" data-cat="all">كل المنيو</button>
+
+        <button class="tab" data-cat="grill">قسم الشواية</button>
+
+        <button class="tab" data-cat="rice">الأرز والإضافات</button>
+
+        <button class="tab" data-cat="sides">المقبلات والسلطات</button>
+
+        <button class="tab" data-cat="drinks">المشروبات</button>
+
+        <button class="tab" data-cat="dessert">الحلو</button>
+      </nav>
+
+      <div id="menu">
+        <!-- قسم الشواية -->
+
+        <section class="menu-section" data-section="grill">
+          <div class="section-title">
+            <h2>🔥 قسم الشواية</h2>
+          </div>
+
+          <div class="grid">
+            <article class="card">
+              <div class="info">
+                <div class="name">دجاجة كاملة مع أرز بشاور</div>
+                <div class="desc">دجاج شواية مع أرز بسمتي أبيض.</div>
+              </div>
+              <div class="price">550 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">نصف دجاجة مع أرز بشاور</div>
+                <div class="desc">نصف دجاجة مشوية مع أرز بسمتي.</div>
+              </div>
+              <div class="price">305 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">ربع دجاجة ورك مع أرز بشاور</div>
+                <div class="desc">ربع دجاجة مشوية مع أرز أبيض.</div>
+              </div>
+              <div class="price">190 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">دجاجة كاملة مع أرز بخاري</div>
+                <div class="desc">دجاج شواية مع أرز بسمتي أصفر.</div>
+              </div>
+              <div class="price">550 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">نصف دجاجة مع أرز بخاري</div>
+                <div class="desc">نصف دجاجة مشوية وأرز بخاري.</div>
+              </div>
+              <div class="price">305 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">دجاجة كاملة مع أرز ميكس</div>
+                <div class="desc">دجاجة مشوية مع أرز متبل.</div>
+              </div>
+              <div class="price">550 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">نصف دجاجة مع أرز ميكس</div>
+                <div class="desc">نصف دجاجة مشوية مع أرز متبل.</div>
+              </div>
+              <div class="price">305 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">فرخة سادة</div>
+                <div class="desc">دجاجة مشوية بدون أرز أو إضافات.</div>
+              </div>
+              <div class="price">435 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">نصف فرخة سادة</div>
+                <div class="desc">نصف دجاجة مشوية بدون إضافات.</div>
+              </div>
+              <div class="price">260 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">وجبة بيت الشواية</div>
+                <div class="desc">دجاج مع خبز وبطاطس وحمص وثومية.</div>
+              </div>
+              <div class="price">320 <small>ج.م</small></div>
+            </article>
+          </div>
+        </section>
+
+        <!-- الأرز والإضافات -->
+
+        <section class="menu-section" data-section="rice">
+          <div class="section-title">
+            <h2>🍚 الأرز والإضافات</h2>
+          </div>
+
+          <div class="grid">
+            <article class="card">
+              <div class="info">
+                <div class="name">أرز بشاور</div>
+                <div class="desc">أرز بسمتي أبيض سادة.</div>
+              </div>
+              <div class="price">86 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">أرز بخاري</div>
+                <div class="desc">أرز بسمتي أصفر.</div>
+              </div>
+              <div class="price">86 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">مشكل فرن</div>
+                <div class="desc">تشكيلة خضروات بالفرن.</div>
+              </div>
+              <div class="price">95 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">ملوخية</div>
+                <div class="desc">ملوخية خضراء.</div>
+              </div>
+              <div class="price">80 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">خبز طازج</div>
+                <div class="desc">خبز شامي أبيض.</div>
+              </div>
+              <div class="price">18 <small>ج.م</small></div>
+            </article>
+          </div>
+        </section>
+
+        <!-- المقبلات والسلطات -->
+
+        <section class="menu-section" data-section="sides">
+          <div class="section-title">
+            <h2>🥗 المقبلات والسلطات</h2>
+          </div>
+
+          <div class="grid">
+            <article class="card">
+              <div class="info">
+                <div class="name">سحاوق أحمر</div>
+                <div class="desc">خلطة طماطم حارة.</div>
+              </div>
+              <div class="price">25 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">سحاوق أخضر</div>
+                <div class="desc">فلفل أخضر مهروس.</div>
+              </div>
+              <div class="price">30 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">سحاوق جبن</div>
+                <div class="desc">خلطة سحاوق بالجبنة.</div>
+              </div>
+              <div class="price">65 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">سلطة خضراء</div>
+                <div class="desc">خضروات طازجة.</div>
+              </div>
+              <div class="price">30 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">سلطة ليمون وبصل</div>
+                <div class="desc">ليمون وبصل وفلفل.</div>
+              </div>
+              <div class="price">35 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">خيار باللبن</div>
+                <div class="desc">زبادي وخيار بالبهارات.</div>
+              </div>
+              <div class="price">65 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">حمص</div>
+                <div class="desc">حمص مهروس بالليمون وزيت الزيتون.</div>
+              </div>
+              <div class="price">85 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">ثومية</div>
+                <div class="desc">صوص الثوم الكريمي.</div>
+              </div>
+              <div class="price">35 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">بطاطس</div>
+                <div class="desc">بطاطس مقلية مقرمشة.</div>
+              </div>
+              <div class="price">85 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">طحينية سادة</div>
+                <div class="desc">طحينة بطعمها الشرقي.</div>
+              </div>
+              <div class="price">50 <small>ج.م</small></div>
+            </article>
+          </div>
+        </section>
+
+        <!-- المشروبات -->
+
+        <section class="menu-section" data-section="drinks">
+          <div class="section-title">
+            <h2>🥤 المشروبات</h2>
+          </div>
+
+          <div class="grid">
+            <article class="card">
+              <div class="info">
+                <div class="name">مياه معدنية</div>
+                <div class="desc">مياه للشرب.</div>
+              </div>
+              <div class="price">27 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">في كولا</div>
+                <div class="desc">مشروب غازي.</div>
+              </div>
+              <div class="price">45 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">لبن رايب</div>
+                <div class="desc">مشروب لبني منعش.</div>
+              </div>
+              <div class="price">45 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">شاي أحمر</div>
+                <div class="desc">شاي ساخن.</div>
+              </div>
+              <div class="price">25 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">شاي عدني</div>
+                <div class="desc">شاي بالحليب والبهارات.</div>
+              </div>
+              <div class="price">55 <small>ج.م</small></div>
+            </article>
+          </div>
+        </section>
+
+        <!-- الحلويات -->
+
+        <section class="menu-section" data-section="dessert">
+          <div class="section-title">
+            <h2>🍮 الحلو</h2>
+          </div>
+
+          <div class="grid">
+            <article class="card">
+              <div class="info">
+                <div class="name">كنافة بالقشطة</div>
+                <div class="desc">كنافة شرقية بالقشطة والشربات.</div>
+              </div>
+              <div class="price">75 <small>ج.م</small></div>
+            </article>
+
+            <article class="card">
+              <div class="info">
+                <div class="name">كنافة نوتيلا</div>
+                <div class="desc">كنافة محشوة بكريمة الشوكولاتة.</div>
+              </div>
+              <div class="price">105 <small>ج.م</small></div>
+            </article>
+          </div>
+        </section>
       </div>
-      <div class="offer">
-       <b>
-        رِجّة السعادة
-       </b>
-       <span>
-        3 قطع استريبس وصوص من اختيارك
-       </span>
-       <strong>
-        119 جنيه
-       </strong>
-      </div>
-      <div class="offer">
-       <b>
-        كبير السعادة
-       </b>
-       <span>
-        5 قطع فرايد + خبز
-       </span>
-       <strong>
-        230 جنيه
-       </strong>
-      </div>
-     </div>
-    </section>
-    <section id="menu">
-     <div class="section-head">
-      <div>
-       <h2>
-        اختار من المنيو 🍗
-       </h2>
-       <p>
-        كل اللي نفسك فيه، اختار وضيف للسلة
-       </p>
-      </div>
-     </div>
-     <nav aria-label="أقسام المنيو" class="categories" id="categories">
-     </nav>
-     <div class="toolbar">
-      <h2 id="categoryTitle">
-       الأكثر طلبًا
-      </h2>
-      <span class="result-count" id="resultCount">
-      </span>
-     </div>
-     <div class="grid" id="products">
-     </div>
-    </section>
-   </div>
-  </main>
-  <footer class="footer">
-   <div class="footer-inner">
-    <div>
-     <b>
-      بازوكا 🍗
-     </b>
-     <p>
-      واجهة تجريبية غير رسمية &mdash; الأسعار والمنتجات للعرض وقد تختلف حسب الفرع.
-     </p>
-    </div>
-    <a href="https://bazookaegy.com/ar" rel="noopener" target="_blank">
-     زيارة الموقع الرسمي &nearrow;
-    </a>
-   </div>
-  </footer>
-  <div class="overlay" id="overlay">
-  </div>
-  <aside aria-label="سلة المشتريات" class="drawer" id="drawer">
-   <div class="drawer-head">
-    <h2>
-     سلة المشتريات 🛒
-    </h2>
-    <button aria-label="إغلاق" class="close" id="closeCart">
-     &times;
-    </button>
-   </div>
-   <div class="cart-items" id="cartItems">
-   </div>
-   <div class="drawer-foot">
-    <div class="total">
-     <span>
-      الإجمالي
-     </span>
-     <span id="total">
-      0 جنيه
-     </span>
-    </div>
-    <button class="checkout" id="checkout">
-     تأكيد الطلب (تجريبي)
-    </button>
-   </div>
-  </aside>
-  <div class="toast" id="toast">
-  </div>
-  <script>
-   const photo= {
-    chicken:'photo-1626082927389-6cd097cdc6ec',burger:'photo-1568901346375-23c9450c58cd',wrap:'photo-1626700051175-6818013e1d4f',fries:'photo-1573080496219-bb080dd4f877',box:'photo-1625944525533-473f1a3d54e7',rice:'photo-1512058564366-18510be2db19',strips:'photo-1562967914-608f82629710',meal:'photo-1606755962773-d324e0a13086'
-}
-;
-const products=[
-{id:1,name:'وزير السعادة',cat:'العروض',price:199,desc:'2 ساندوتش سينجل (تشيكن أو بيف) + 2 شيبسي',img:photo.burger,badge:'عرض مميز'},
-{id:2,name:'7 قطع فرايد تشيكن',cat:'العروض',price:300,desc:'7 قطع فرايد تشيكن بدون أجنحة + 2 عيش',img:photo.chicken,badge:'عرض لفترة محدودة'},
-{id:3,name:'رِجّة السعادة',cat:'العروض',price:119,desc:'3 قطع استريبس متقطعة وخس وصوص من اختيارك',img:photo.strips,badge:'الأكثر طلبًا'},
-{id:4,name:'كبير القرمشة',cat:'العروض',price:400,desc:'10 قطع فرايد تشيكن + 3 عيش',img:photo.box},
-{id:5,name:'كبير السعادة',cat:'العروض',price:230,desc:'5 قطع فرايد + خبز',img:photo.chicken},
-{id:6,name:'راب السعادة',cat:'العروض',price:300,desc:'4 ساندوتشات راب: 2 تشيكن + 1 برجر + 1 مسحب',img:photo.wrap},
-{id:7,name:'هرمون السعادة',cat:'العروض',price:150,desc:'قطعتين دجاج + أرز + كول سلو وسط + عيش',img:photo.meal},
-{id:8,name:'فاير سوبريم كومبو',cat:'الكومبو',price:155,desc:'ساندوتش زنجر سوبر سوبريم + فرايز + مشروب',img:photo.burger},
-{id:9,name:'كومبو سينجل',cat:'الكومبو',price:160,desc:'ساندوتش بيف أو تشيكن سينجل + فرايز + مشروب',img:photo.meal,badge:'عرض'},
-{id:10,name:'بووم بوكس سينجل',cat:'البوكسات',price:165,desc:'قطعة دجاج + ساندوتش برجر + كول سلو + مشروب + أرز',img:photo.box},
-{id:11,name:'فلاش السيطرة',cat:'الكومبو',price:199,desc:'3 قطع دجاج + أرز + كول سلو وسط + عيش',img:photo.chicken},
-{id:12,name:'فلاش ميكس',cat:'الكومبو',price:299,desc:'3 قطع فرايد + ساندوتش أو راب + كول سلو + فرايز',img:photo.box,badge:'الأكثر طلبًا'},
-{id:13,name:'دبل كرنش',cat:'العائلات',price:380,desc:'6 قطع بروست + 2 كول سلو + 2 عيش + 2 أرز',img:photo.meal},
-{id:14,name:'وجبة بازوكا 6 قطع',cat:'العائلات',price:485,desc:'6 قطع دجاج + فرايز عائلي + 2 كول سلو + مشروب لتر + 3 عيش',img:photo.box},
-{id:15,name:'وجبة بازوكا 9 قطع',cat:'العائلات',price:699,desc:'9 قطع دجاج + فرايز عائلي + 4 كول سلو + مشروب لتر + 4 عيش',img:photo.box},
-{id:16,name:'وجبة مسحب 7 قطع',cat:'المسحب والاستريبس',price:190,desc:'7 قطع مسحب + فرايز وسط + 2 صوص + عيش',img:photo.strips},
-{id:17,name:'وجبة مسحب 10 قطع',cat:'المسحب والاستريبس',price:225,desc:'10 قطع مسحب + فرايز وسط + 2 صوص + 2 عيش',img:photo.strips},
-{id:18,name:'بازوكا كريسبي ستريبس',cat:'المسحب والاستريبس',price:160,desc:'3 قطع استريبس + فرايز صغير + كول سلو + عيش',img:photo.strips},
-{id:19,name:'سوبر كريسبي ستريبس',cat:'المسحب والاستريبس',price:250,desc:'5 قطع استريبس + فرايز صغير + كول سلو + عيش',img:photo.strips},
-{id:20,name:'تشيكن BBQ',cat:'ساندوتشات تشيكن',price:155,desc:'تشيكن كريسبي وصوص باربكيو وجبنة وخس وطماطم ومخلل',img:photo.burger},
-{id:21,name:'تشيكن رانش',cat:'ساندوتشات تشيكن',price:155,desc:'تشيكن كريسبي وصوص رانش وموزاريلا وخس ومخلل',img:photo.burger},
-{id:22,name:'تركي تشيكن',cat:'ساندوتشات تشيكن',price:155,desc:'تشيكن كريسبي + تركي مدخن + صوص جبنة وخضار',img:photo.burger},
-{id:23,name:'بازوكا تشيكن فاير',cat:'ساندوتشات تشيكن',price:205,desc:'تشيكن زنجر حار + مايونيز سبايسي + خس وطماطم وصوص شيدر',img:photo.burger,badge:'حار'},
-{id:24,name:'كرانشي تشيكن راب',cat:'الراب',price:105,desc:'قطعتين استريبس وصوص بيبر مايو وخس وطماطم',img:photo.wrap},
-{id:25,name:'راب مسحب',cat:'الراب',price:105,desc:'3 قطع مسحب + جبنة + خس وصوص من اختيارك',img:photo.wrap},
-{id:26,name:'راب فاهيتا',cat:'الراب',price:105,desc:'فراخ مشوية + بصل وفلفل ألوان وصوص سويت تشيلي',img:photo.wrap},
-{id:27,name:'بازوكا برجر',cat:'برجر بيف',price:165,desc:'برجر مشوي + هالبينو + شطة + جبنة وخس وطماطم وبصل',img:photo.burger},
-{id:28,name:'بيج بازوكا برجر',cat:'برجر بيف',price:165,desc:'برجر بيف + جبنة + خس وطماطم ومخلل وصوص بازوكا',img:photo.burger},
-{id:29,name:'بيف برجر',cat:'برجر بيف',price:80,desc:'برجر بيف + جبنة + كاتشب + خيار مخلل',img:photo.burger},
-{id:30,name:'فرايز',cat:'الإضافات',price:55,desc:'بطاطس مقلية مقرمشة',img:photo.fries},
-{id:31,name:'فرايز عائلي',cat:'الإضافات',price:90,desc:'حجم عائلي للمشاركة',img:photo.fries},
-{id:32,name:'تشيز فرايز بومب',cat:'الإضافات',price:90,desc:'بطاطس + صوص جبنة أو رانش أو تشيلي',img:photo.fries},
-{id:33,name:'موزاريلا ستيكس',cat:'الإضافات',price:55,desc:'3 أصابع جبنة مقلية + صوص من اختيارك',img:photo.meal},
-{id:34,name:'ريزو',cat:'الأرز والوجبات',price:110,desc:'أرز متبل + استريبس + بصل + صوص',img:photo.rice},
-{id:35,name:'كشري بازوكا',cat:'الأرز والوجبات',price:160,desc:'أرز بسمتي + توست + صوص شيدر + 2 استريبس',img:photo.rice},
-{id:36,name:'أرز بسمتي وسط',cat:'الأرز والوجبات',price:50,desc:'أرز بسمتي',img:photo.rice},
-{id:37,name:'كول سلو',cat:'الإضافات',price:50,desc:'سلطة كول سلو طازة',img:photo.meal},
-{id:38,name:'مشروب',cat:'المشروبات',price:30,desc:'اختار مشروبك المفضل',img:photo.meal},
-{id:39,name:'وجبة أطفال',cat:'وجبات الأطفال',price:150,desc:'قطعة دجاج أو استريبس + فرايز + عصير + لعبة',img:photo.box,badge:'للأطفال'}
-];
-const categories=['الكل','العروض','ساندوتشات تشيكن','برجر بيف','الراب','الكومبو','البوكسات','العائلات','المسحب والاستريبس','الأرز والوجبات','الإضافات','المشروبات','وجبات الأطفال'];
-let active='الكل',cart= {
-}
-;
-const productsEl=document.getElementById('products'),catsEl=document.getElementById('categories'),searchEl=document.getElementById('search');
-function imageUrl(key) {
-    return `https://images.unsplash.com/${key}?auto=format&fit=crop&w=700&q=80`
-}
-function renderCats() {
-    catsEl.innerHTML=categories.map(c=>`<button class="cat ${active===c?'active':''}" data-cat="${c}">${c}</button>`).join('');
-    catsEl.querySelectorAll('button').forEach(b=>b.onclick=()=>{active=b.dataset.cat;renderCats();renderProducts()})
-}
-function renderProducts() {
-    let q=searchEl.value.trim().toLowerCase();
-    let list=products.filter(p=>(active==='الكل'||p.cat===active)&&(`${p.name} ${p.desc} ${p.cat}`).toLowerCase().includes(q));
-    document.getElementById('categoryTitle').textContent=active==='الكل'?'كل الأصناف':active;
-    document.getElementById('resultCount').textContent=`${list.length} صنف`;
-    productsEl.innerHTML=list.length?list.map(p=>`<article class="card"><div class="food-image"><img loading="lazy" src="${imageUrl(p.img)}" alt="${p.name}" onerror="this.src='https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=700&q=80'"><button class="heart" aria-label="إضافة للمفضلة" onclick="this.textContent=this.textContent==='♡'?'♥':'♡'">♡</button>${p.badge?`<span class="badge">${p.badge}</span>`:''}</div><div class="card-body"><h3>${p.name}</h3><p class="desc">${p.desc}</p><div class="card-bottom"><div class="price">${p.price} <small>جنيه</small></div><button class="add" aria-label="أضف ${p.name} للسلة" onclick="addToCart(${p.id})">+</button></div></div></article>`).join(''):'<div class="empty">مفيش أصناف مطابقة لبحثك 🙈</div>'
-}
-function addToCart(id) {
-    cart[id]=(cart[id]||0)+1;
-    updateCart();
-    showToast('اتضاف للسلة بنجاح ✓')
-}
-function updateCart() {
-    let count=Object.values(cart).reduce((a,b)=>a+b,0);
-    document.getElementById('cartCount').textContent=count;
-    let items=Object.entries(cart);
-    document.getElementById('cartItems').innerHTML=items.length?items.map(([id,qty])=>{let p=products.find(x=>x.id===+id);return `<div class="cart-item"><img src="${imageUrl(p.img)}" alt=""><div class="cart-item-main"><h4>${p.name}</h4><small>${p.price*qty} جنيه</small><div class="qty"><button onclick="changeQty(${id},-1)">−</button><b>${qty}</b><button onclick="changeQty(${id},1)">+</button></div></div></div>`}).join(''):'<div class="cart-empty">🛒<br><b>السلة لسه فاضية</b><p>ضيف أكلك المفضل وهنعرضه هنا</p></div>';
-    let total=items.reduce((sum,[id,qty])=>sum+products.find(p=>p.id===+id).price*qty,0);
-    document.getElementById('total').textContent=total+' جنيه'
-}
-function changeQty(id,delta) {
-    cart[id]=(cart[id]||0)+delta;
-    if(cart[id]<=0)delete cart[id];
-    updateCart()
-}
-function toggleCart(open) {
-    document.getElementById('drawer').classList.toggle('open',open);
-    document.getElementById('overlay').classList.toggle('open',open)
-}
-let toastTimer;
-function showToast(s) {
-    let t=document.getElementById('toast');
-    t.textContent=s;
-    t.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer=setTimeout(()=>t.classList.remove('show'),1800)
-}
-searchEl.addEventListener('input',renderProducts);
-document.getElementById('openCart').onclick=()=>toggleCart(true);
-document.getElementById('closeCart').onclick=()=>toggleCart(false);
-document.getElementById('overlay').onclick=()=>toggleCart(false);
-document.getElementById('checkout').onclick=()=>showToast(Object.keys(cart).length?'دي واجهة تجريبية — مش بتبعت طلبات حقيقية':'ضيف أصناف للسلة الأول');
-renderCats();
-renderProducts();
-updateCart();
-  </script>
- </body>
+
+      <div class="empty" id="empty">مفيش أصناف مطابقة للبحث ده.</div>
+
+      <footer>
+        <strong>بيت الشواية</strong>
+        الشواية عندنا ليها حكاية ❤️
+
+        <div class="note">
+          الأسعار المعروضة استرشادية وقد تختلف حسب الفرع أو تتغير من وقت لآخر.
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      const tabs = [...document.querySelectorAll(".tab")];
+
+      const sections = [...document.querySelectorAll(".menu-section")];
+
+      const search = document.getElementById("search");
+      const empty = document.getElementById("empty");
+
+      const sectionPhotos = {
+        grill:
+          "https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=1200&q=85",
+
+        rice: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1200&q=85",
+
+        sides:
+          "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=85",
+
+        drinks:
+          "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=1200&q=85",
+
+        dessert:
+          "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=1200&q=85",
+      };
+
+      const sectionThumbs = {
+        grill: sectionPhotos.grill,
+        rice: sectionPhotos.rice,
+        sides: sectionPhotos.sides,
+        drinks: sectionPhotos.drinks,
+        dessert: sectionPhotos.dessert,
+      };
+
+      // إضافة صور الأقسام والأكلات
+
+      sections.forEach((section) => {
+        const key = section.dataset.section;
+
+        const heading = section.querySelector(".section-title");
+
+        heading.style.setProperty(
+          "--section-photo",
+          `url("${sectionPhotos[key]}")`,
+        );
+
+        section.querySelectorAll(".card").forEach((card) => {
+          const img = document.createElement("img");
+
+          img.className = "food-thumb";
+
+          img.loading = "lazy";
+
+          img.alt =
+            card.querySelector(".name")?.textContent || "صنف من بيت الشواية";
+
+          img.src = sectionThumbs[key];
+
+          card.prepend(img);
+        });
+      });
+
+      // البحث والتصفية
+
+      let active = "all";
+
+      function filter() {
+        let q = search.value.trim().toLowerCase();
+
+        let shown = 0;
+
+        sections.forEach((section) => {
+          let cat = active === "all" || section.dataset.section === active;
+
+          let cards = [...section.querySelectorAll(".card")];
+
+          let count = 0;
+
+          cards.forEach((card) => {
+            let ok = cat && card.innerText.toLowerCase().includes(q);
+
+            card.style.display = ok ? "flex" : "none";
+
+            if (ok) {
+              count++;
+            }
+          });
+
+          section.style.display = count ? "block" : "none";
+
+          shown += count;
+        });
+
+        empty.style.display = shown ? "none" : "block";
+      }
+
+      // أزرار الأقسام
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((button) => {
+            button.classList.remove("active");
+          });
+
+          tab.classList.add("active");
+
+          active = tab.dataset.cat;
+
+          filter();
+        });
+      });
+
+      // تشغيل البحث
+
+      search.addEventListener("input", filter);
+    </script>
+  </body>
 </html>
