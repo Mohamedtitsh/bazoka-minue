@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>بيت الشواية | المنيو</title>
+    <link rel="icon" type="image/png" href="./favicon.png" />
 
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap");
@@ -80,6 +81,10 @@
         background: #760811;
         box-shadow: 0 0 0 5px #ffffff12;
       }
+      #portfolio-link {
+        color: var(--gold);
+        text-decoration: none;
+      }
 
       .brand {
         font-size: clamp(25px, 4vw, 39px);
@@ -105,6 +110,56 @@
         font-size: 13px;
         font-weight: 700;
         backdrop-filter: blur(8px);
+      }
+      /* FOOTER DESIGN */
+
+      footer {
+        background: #45070c;
+        padding: 35px 20px;
+        border-radius: 22px;
+        text-align: center;
+        margin-top: 50px;
+        border: 1px solid var(--gold);
+      }
+
+      .footer-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        margin: 30px 0;
+      }
+
+      .contact a {
+        color: var(--gold);
+        font-size: 20px;
+        text-decoration: none;
+      }
+
+      .location iframe {
+        margin-top: 12px;
+      }
+
+      .top-btn {
+        background: var(--gold);
+        color: #45070c;
+        border: none;
+        padding: 13px 25px;
+        border-radius: 12px;
+        font-family: inherit;
+        font-weight: 900;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .top-btn:hover {
+        transform: translateY(-4px);
+        background: white;
+      }
+
+      @media (max-width: 650px) {
+        .footer-info {
+          grid-template-columns: 1fr;
+        }
       }
 
       .hero {
@@ -230,6 +285,21 @@
         align-items: center;
         gap: 12px;
         margin: 28px 0 15px;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 20px;
+      }
+      .card {
+        transition: all 0.4s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-7px) scale(1.02);
+        box-shadow: 0 15px 30px #0005;
       }
 
       .section-title:after {
@@ -751,12 +821,46 @@
 
       <div class="empty" id="empty">مفيش أصناف مطابقة للبحث ده.</div>
 
-      <footer>
-        <strong>بيت الشواية</strong>
-        الشواية عندنا ليها حكاية ❤️
+      <footer id="footer">
+        ```
+        <strong>🔥 بيت الشواية 🔥</strong>
 
-        <div class="note">
-          الأسعار المعروضة استرشادية وقد تختلف حسب الفرع أو تتغير من وقت لآخر.
+        <p>الشواية عندنا ليها حكاية ❤️</p>
+
+        <div class="footer-info">
+          <div class="contact">
+            <h3>📞 تواصل معنا</h3>
+            <a href="tel:01030075398">01030075398</a>
+          </div>
+
+          <div class="location">
+            <h3>📍 مكاننا</h3>
+
+            <iframe
+              src="https://www.google.com/maps?q=Giza,Egypt&output=embed"
+              width="100%"
+              height="220"
+              style="border: 0; border-radius: 15px"
+              loading="lazy"
+            >
+            </iframe>
+          </div>
+        </div>
+
+        <button class="top-btn" onclick="goToTop()">
+          ↑ الرجوع لأول المنيو
+        </button>
+
+        <div class="note">جميع الحقوق محفوظة © بيت الشواية</div>
+        <div class="portfolio">
+          <a
+            href="https://mohamedtitsh.github.io/portfolio/"
+            target="_blank"
+            id="portfolio-link"
+          >
+            mohamed mahmoud
+          </a>
+          <p style="display: inline-block">Developed by</p>
         </div>
       </footer>
     </main>
@@ -874,6 +978,12 @@
       // تشغيل البحث
 
       search.addEventListener("input", filter);
+      function goToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
     </script>
   </body>
 </html>
